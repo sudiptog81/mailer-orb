@@ -12,4 +12,9 @@ root:$PARAM_FROM:$SMTP_HOST:587
 circleci:$PARAM_FROM:$SMTP_HOST:587
 EOF
 
-sendmail $PARAM_TO < $PARAM_FILENAME
+cat << EOF > email.txt
+Subject: $PARAM_SUBJECT
+$PARAM_BODY
+EOF
+
+sendmail $PARAM_TO < email.txt

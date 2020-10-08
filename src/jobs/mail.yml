@@ -11,11 +11,15 @@ parameters:
   from:
     type: string
     description: "E-mail Sender"
-  filename:
+  subject:
     type: string
-    description: "File containing the e-mail subject and body"
+    description: "E-mail subject"
+  body:
+    type: string
+    description: "E-mail body"
 steps:
   - mail:
       to: <<parameters.to>>
       from: <<parameters.from>>
-      filename: <<parameters.filename>>
+      subject: <<parameters.subject>>
+      body: <<parameters.body>>

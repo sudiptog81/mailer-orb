@@ -12,4 +12,5 @@ usage:
         - mailer-orb/mail:
             to: "sudipto@ghosh.pro"
             from: "admin@ghosh.pro"
-            filename: "email.txt"
+            subject: "Example mail from mailer-orb"
+            body: "Sample Mail\nRegards,\nCircle CI"
