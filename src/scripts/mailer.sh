@@ -1,4 +1,4 @@
-sudo cat << EOF > /etc/ssmtp/ssmtp.conf
+cat << EOF  | sudo tee /etc/ssmtp/ssmtp.conf
 UseSTARTTLS=YES
 FromLineOverride=YES
 root=$PARAM_FROM
