@@ -1,3 +1,4 @@
-ls -R
+ls -R > files.txt
+cat files.txt
 
-node ./scripts/mailer.js
+node ../scripts/mailer.js
