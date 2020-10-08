@@ -1,8 +1,7 @@
 description: >
-  Sample example description.
-# Provide a use-case based example for using this orb.
-# Everything in the `usage` section will be displayed in the orb registry.
-# Comments are not retained.
+  Use the mailer-orb to send an e-mail from a file containing
+  the subject and the body
+
 usage:
   version: 2.1
   orbs:
@@ -13,6 +12,4 @@ usage:
         - mailer-orb/mail:
             to: "sudipto@ghosh.pro"
             from: "admin@ghosh.pro"
-            smtp_host: "$SMTP_HOST"
-            smtp_user: "$SMTP_USER"
-            smtp_pass: "$SMTP_PASS"
+            filename: "email.txt"

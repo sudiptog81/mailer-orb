@@ -8,15 +8,15 @@ parameters:
   from:
     type: string
     description: "E-mail Sender"
-  subject:
+  filename:
     type: string
-    description: "E-mail Subject"
+    description: "File containing the e-mail subject and body"
 steps:
   - run: sudo apt update && sudo apt install -y ssmtp
   - run:
       environment:
         PARAM_TO: <<parameters.to>>
         PARAM_FROM: <<parameters.from>>
-        PARAM_SUBJECT: <<parameters.subject>>
+        PARAM_FILENAME: <<parameters.filename>>
       name: Send E-mail
       command: <<include(scripts/mailer.sh)>>

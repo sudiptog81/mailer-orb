@@ -23,12 +23,11 @@ jobs:
       - image: cimg/base:stable
     steps:
       - checkout
-      # - mailer-orb/mail:
-      #     to: "sudipto@ghosh.pro"
-      #     from: "admin@ghosh.pro"
-      #     smtp_host: "$SMTP_HOST"
-      #     smtp_user: "$SMTP_USER"
-      #     smtp_pass: "$SMTP_PASS"
+      - run: <<include(tests/test.sh)>>
+      - mailer-orb/mail:
+          to: "sudipto@ghosh.pro"
+          from: "admin@ghosh.pro"
+          filename: "email.txt"
 
 workflows:
   test-pack:
