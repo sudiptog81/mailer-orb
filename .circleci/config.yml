@@ -22,11 +22,11 @@ jobs:
       - image: cimg/base:stable
     steps:
       - checkout
-      # - mailer-orb/mail:
-      #     to: "sudipto@ghosh.pro"
-      #     from: "admin@ghosh.pro"
-      #     subject: "Integration Test from mailer-orb"
-      #     body: "Test Passing\nRegards,\nCircle CI"
+      - mailer-orb/mail:
+          to: "sudipto@ghosh.pro"
+          from: "admin@ghosh.pro"
+          subject: "Integration Test from mailer-orb"
+          body: "Test Passing\nRegards,\nCircle CI"
 
 workflows:
   test-pack:
