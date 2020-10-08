@@ -23,7 +23,7 @@ jobs:
       - image: cimg/base:stable
     steps:
       - checkout
-      - run: <<include(tests/test.sh)>>
+      - run: "echo 'Subject: Integration Test for mailer-orb\nTest Passing\n' > email.txt"
       - mailer-orb/mail:
           to: "sudipto@ghosh.pro"
           from: "admin@ghosh.pro"
