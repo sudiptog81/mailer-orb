@@ -12,29 +12,28 @@ parameters:
   dev-orb-version:
     description: >
       The development version of the orb to test.
-      This value is automatically adjusted by the "trigger-integration-tests-workflow" job to correspond with the specific version created by the commit and should not be edited.
       A "dev:alpha" version must exist for the initial pipeline run.
     type: string
     default: "dev:alpha"
 
 jobs:
-  integration-test-1:
+  integration-test:
     docker:
       - image: cimg/base:stable
     steps:
       - checkout
       - run: "echo 'Subject: Integration Test for mailer-orb\nTest Passing\n' > email.txt"
-      # - mailer-orb/mail:
-      #     to: "sudipto@ghosh.pro"
-      #     from: "admin@ghosh.pro"
-      #     filename: "email.txt"
+      - mailer-orb/mail:
+          to: "sudipto@ghosh.pro"
+          from: "admin@ghosh.pro"
+          filename: "email.txt"
 
 workflows:
   test-pack:
     unless: <<pipeline.parameters.run-integration-tests>>
     jobs:
-      - orb-tools/lint # Lint Yaml files
-      - orb-tools/pack # Pack orb source
+      - orb-tools/lint
+      - orb-tools/pack
       - hold-for-dev-publish:
           type: approval
           requires:
@@ -42,7 +41,7 @@ workflows:
             - orb-tools/pack
       - orb-tools/publish-dev:
           orb-name: sudiptog81/mailer-orb
-          context: orb-publishing # A restricted context containing your private publishing credentials. Will only execute if approved by an authorized user.
+          context: orb-publishing
           requires: [hold-for-dev-publish]
       - orb-tools/trigger-integration-tests-workflow:
           name: trigger-integration-dev
@@ -53,7 +52,7 @@ workflows:
   integration-test_deploy:
     when: <<pipeline.parameters.run-integration-tests>>
     jobs:
-      - integration-test-1
+      - integration-test
       - orb-tools/dev-promote-prod-from-commit-subject:
           orb-name: sudiptog81/mailer-orb
           context: orb-publishing
@@ -61,7 +60,7 @@ workflows:
           fail-if-semver-not-indicated: true
           publish-version-tag: false
           requires:
-            - integration-test-1
+            - integration-test
           filters:
             branches:
               only: master
