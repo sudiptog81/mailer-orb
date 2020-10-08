@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const {
     PARAM_TO: mailTo,
     PARAM_FROM: mailFrom,
