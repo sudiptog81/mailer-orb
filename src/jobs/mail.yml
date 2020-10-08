@@ -1,0 +1,25 @@
+description: >
+  This job sends an c-mail to a recipient from a specified address
+  using SMTP credentials in the environment variables
+
+executor: default
+
+parameters:
+  to:
+    type: string
+    description: "E-mail Recipient"
+  from:
+    type: string
+    description: "E-mail Sender"
+  subject:
+    type: string
+    description: "E-mail subject"
+  body:
+    type: string
+    description: "E-mail body"
+steps:
+  - mail:
+      to: <<parameters.to>>
+      from: <<parameters.from>>
+      subject: <<parameters.subject>>
+      body: <<parameters.body>>

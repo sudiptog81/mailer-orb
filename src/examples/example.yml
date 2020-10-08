@@ -1,13 +1,16 @@
 description: >
-  Sample example description.
-# Provide a use-case based example for using this orb.
-# Everything in the `usage` section will be displayed in the orb registry.
-# Comments are not retained.
+  Use the mailer-orb to send an e-mail from a file containing
+  the subject and the body
+
 usage:
   version: 2.1
   orbs:
-    <orb-name>: <namespace>/<orb-name>@1.2.3
+    mailer-orb: sudiptog81/mailer-orb@dev:alpha
   workflows:
     use-my-orb:
       jobs:
-        - <orb-name>/<job-name>
+        - mailer-orb/mail:
+            to: "sudipto@ghosh.pro"
+            from: "admin@ghosh.pro"
+            subject: "Example mail from mailer-orb"
+            body: "Sample Mail\nRegards,\nCircle CI"
