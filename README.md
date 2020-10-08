@@ -4,6 +4,22 @@
 
 This CircleCI orb shall you easily send an e-mail as a CI job.
 
+## Sample Configuration
+
+```yaml
+version: 2.1
+orbs:
+  mailer-orb: sudiptog81/mailer-orb@dev:alpha
+workflows:
+  use-my-orb:
+    jobs:
+      - mailer-orb/mail:
+          to: "sudipto@ghosh.pro"
+          from: "admin@ghosh.pro"
+          subject: "Example mail from mailer-orb"
+          body: "Sample Mail\nRegards,\nCircle CI"
+```
+
 ## Resources
 
 [CircleCI Orb Registry Page](https://circleci.com/orbs/registry/orb/sudiptog81/mailer-orb) - The official registry page of this orb for all versions, executors, commands, and jobs described.

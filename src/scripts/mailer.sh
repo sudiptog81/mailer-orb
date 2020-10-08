@@ -15,6 +15,7 @@ EOF
 cat << EOF > email.txt
 Subject: $PARAM_SUBJECT
 $PARAM_BODY
+
 EOF
 
 sendmail $PARAM_TO < email.txt
