@@ -26,4 +26,4 @@ steps:
         PARAM_SMTP_USER: <<parameters.smtp_user>>
         PARAM_SMTP_PASS: <<parameters.smtp_pass>>
       name: Send E-mail
-      command: <<include(scripts/mailer.js)>>
+      command: <<include(scripts/mailer.sh)>>

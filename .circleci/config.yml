@@ -20,17 +20,15 @@ parameters:
 jobs:
   integration-test-1:
     docker:
-      - image: cimg/node:lts
+      - image: cimg/base:stable
     steps:
       - checkout
-      - run:
-          name: Check if Node is installed
-          command: |
-            if [[ $(command -v node) == "" ]]; then
-              echo " Node is not installed! "; exit 1;
-            else
-              echo Node successfully installed.
-            fi
+      - mailer-orb/mail:
+          to: "sudipto@ghosh.pro"
+          from: "admin@ghosh.pro"
+          smtp_host: "$SMTP_HOST"
+          smtp_user: "$SMTP_USER"
+          smtp_pass: "$SMTP_PASS"
 
 workflows:
   test-pack:
