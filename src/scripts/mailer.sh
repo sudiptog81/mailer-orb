@@ -1,1 +1,1 @@
-node mailer.js
+node ./scripts/mailer.js
