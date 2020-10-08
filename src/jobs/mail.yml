@@ -11,19 +11,11 @@ parameters:
   from:
     type: string
     description: "E-mail Sender"
-  smtp_host:
+  subject:
     type: string
-    description: "SMTP Host"
-  smtp_user:
-    type: string
-    description: "SMTP Username"
-  smtp_pass:
-    type: string
-    description: "SMTP Password"
+    description: "E-Mail Subject"
 steps:
   - mail:
       to: <<parameters.to>>
       from: <<parameters.from>>
-      smtp_host: <<parameters.smtp_host>>
-      smtp_user: <<parameters.smtp_user>>
-      smtp_pass: <<parameters.smtp_pass>>
+      subject: <<parameters.subject>>
