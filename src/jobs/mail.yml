@@ -1,0 +1,29 @@
+description: >
+  This job sends an E-mail to a recipient from a specified address
+  using provided SMTP credentials
+
+executor: default
+
+parameters:
+  to:
+    type: string
+    description: "E-mail Recipient"
+  from:
+    type: string
+    description: "E-mail Sender"
+  smtp_host:
+    type: string
+    description: "SMTP Host"
+  smtp_user:
+    type: string
+    description: "SMTP Username"
+  smtp_pass:
+    type: string
+    description: "SMTP Password"
+steps:
+  - mail:
+      to: <<parameters.to>>
+      from: <<parameters.from>>
+      smtp_host: <<parameters.smtp_host>>
+      smtp_user: <<parameters.smtp_user>>
+      smtp_pass: <<parameters.smtp_pass>>

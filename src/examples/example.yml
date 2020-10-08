@@ -6,8 +6,13 @@ description: >
 usage:
   version: 2.1
   orbs:
-    <orb-name>: <namespace>/<orb-name>@1.2.3
+    mailer-orb: sudiptog81/mailer-orb@dev:alpha
   workflows:
     use-my-orb:
       jobs:
-        - <orb-name>/<job-name>
+        - mailer-orb/mail:
+            to: "sudipto@ghosh.pro"
+            from: "admin@ghosh.pro"
+            smtp_host: "$SMTP_HOST"
+            smtp_user: "$SMTP_USER"
+            smtp_pass: "$SMTP_PASS"
