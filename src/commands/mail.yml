@@ -15,9 +15,6 @@ steps:
   - run: sudo apt update && sudo apt install -y ssmtp
   - run:
       environment:
-        SMTP_HOST: $SMTP_HOST
-        SMTP_USER: $SMTP_USER
-        SMTP_PASS: $SMTP_PASS
         PARAM_TO: <<parameters.to>>
         PARAM_FROM: <<parameters.from>>
         PARAM_SUBJECT: <<parameters.subject>>
