@@ -8,23 +8,15 @@ parameters:
   from:
     type: string
     description: "E-mail Sender"
-  smtp_host:
+  subject:
     type: string
-    description: "SMTP Host"
-  smtp_user:
-    type: string
-    description: "SMTP Username"
-  smtp_pass:
-    type: string
-    description: "SMTP Password"
+    description: "E-mail Subject"
 steps:
   - run: sudo apt update && sudo apt install -y ssmtp
   - run:
       environment:
         PARAM_TO: <<parameters.to>>
         PARAM_FROM: <<parameters.from>>
-        PARAM_SMTP_HOST: <<parameters.smtp_host>>
-        PARAM_SMTP_USER: <<parameters.smtp_user>>
-        PARAM_SMTP_PASS: <<parameters.smtp_pass>>
+        PARAM_SUBJECT: <<parameters.subject>>
       name: Send E-mail
       command: <<include(scripts/mailer.sh)>>

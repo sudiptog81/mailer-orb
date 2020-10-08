@@ -2,13 +2,13 @@ cat << EOF  | sudo tee /etc/ssmtp/ssmtp.conf
 UseSTARTTLS=YES
 FromLineOverride=YES
 root=$PARAM_FROM
-mailhub=$PARAM_SMTP_HOST:587
-AuthUser=$PARAM_SMTP_USER
-AuthPass=$PARAM_SMTP_PASS
+mailhub=$SMTP_HOST:587
+AuthUser=$SMTP_USER
+AuthPass=$SMTP_PASS
 EOF
 
 cat << EOF > email.txt
-Subject: Mail from mailer-orb
+Subject: $PARAM_SUBJECT
 Hi. This is a test!
 EOF
 
