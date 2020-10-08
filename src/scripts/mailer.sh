@@ -1,6 +1,3 @@
-sudo apt update
-sudo apt install ssmtp
-
 sudo cat << EOF > /etc/ssmtp/ssmtp.conf
 UseSTARTTLS=YES
 FromLineOverride=YES

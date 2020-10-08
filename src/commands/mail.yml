@@ -18,6 +18,7 @@ parameters:
     type: string
     description: "SMTP Password"
 steps:
+  - run: sudo apt update && sudo apt install -y ssmtp
   - run:
       environment:
         PARAM_TO: <<parameters.to>>
